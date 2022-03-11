@@ -65,14 +65,14 @@ INSERT INTO articolo (id, descrizione, prezzo, categoria, rimanenza) VALUES
 (8, 'Adobe CC', '1200.00', 'software', 100),
 (9, 'Office', '120.00', 'software', 100);
 
-INSERT INTO cliente (id, cognome, nome, telefono, email, indirizzo, citta, provincia, regione, credito) VALUES
-(1, 'rossi', 'paolo', '0116702323', 'paolo25@gmail.com', 'Via Roma 25', 'torino', 'To', 'Piemonte', 107),
-(2, 'mori', 'marco', '0116704040', 'marco18@gmail.com', 'Via Torino 18', 'milano', 'Mi', 'Lombardia', NULL),
-(3, 'bianchi', 'luca', '0116701010', 'luca2@gmail.com', 'Via Milano 2', 'bologna', 'Bo', 'Emilia-Romagna', 2119),
-(4, 'verdi', 'mario', '0116702020', 'mario128@gmail.com', 'Corso Francia 128', 'torino', 'To', 'Piemonte', NULL),
-(5, 'rosso', 'alberto', '0116707070', 'alberto12@icloud.com', 'Corso Svizzera 12', 'milano', 'Mi', 'Lombardia', 789),
-(6, 'esposito', 'franco', '0119978812', 'francoe@icloud.com', 'Via Roma 3', 'Asti', 'At', 'Piemonte', 1875),
-(7, 'bruni', 'carlo', '0117778816', 'brunicarlo@icloud.com', 'Corso Stati Uniti 13', 'Torino', 'To', 'Piemonte', NULL);
+INSERT INTO utente (id, cognome, nome, password, telefono, email, indirizzo, citta, provincia, regione) VALUES
+(1, 'rossi', 'paolo', '123rossi', '0116702323', 'paolo25@gmail.com', 'Via Roma 25', 'torino', 'To', 'Piemonte'),
+(2, 'mori', 'marco', '456mori'  , '0116704040', 'marco18@gmail.com', 'Via Torino 18', 'milano', 'Mi', 'Lombardia'),
+(3, 'bianchi', 'luca', '789bianchi', '0116701010', 'luca2@gmail.com', 'Via Milano 2', 'bologna', 'Bo', 'Emilia-Romagna'),
+(4, 'verdi', 'mario', '123verdi', '0116702020', 'mario128@gmail.com', 'Corso Francia 128', 'torino', 'To', 'Piemonte'),
+(5, 'rosso', 'alberto','456rosso', '0116707070', 'alberto12@icloud.com', 'Corso Svizzera 12', 'milano', 'Mi', 'Lombardia'),
+(6, 'esposito', 'franco','789esposito', '0119978812', 'francoe@icloud.com', 'Via Roma 3', 'Asti', 'At', 'Piemonte'),
+(7, 'bruni', 'carlo', '123bruni', '0117778816', 'brunicarlo@icloud.com', 'Corso Stati Uniti 13', 'Torino', 'To', 'Piemonte');
 
 INSERT INTO impiegato (id, nome, cognome, ruolo, rif_to, stipendio, ufficio_id) VALUES
 (1, 'Mario', 'Rossi', 'tecnico', NULL, '2500.00', 1),
