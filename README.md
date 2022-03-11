@@ -1,0 +1,2 @@
+# miniProjectWork
+Implementazioni al gestionale
