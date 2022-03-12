@@ -1,7 +1,5 @@
 package it.es.gestionale;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.List;
 
 
@@ -26,25 +24,7 @@ class EsTestCliente {
 	/*
 	 Elenca (mediante Sysout) gli ordini del cliente 4
 	*/
-	@Test
-	@Transactional
-	void esOrdiniImp() {
 
-		List<ClienteEntity> clienti =  db.findAll();
-		System.out.println("--------------");
-		for( ClienteEntity cliente :clienti){
-			
-			if(cliente.getId()==6){
-				
-				System.out.println(cliente.getOrdini());
-			}
-		}
-		System.out.println("--------------");
-	}
-
-	/*
-	 Conta e mostra il numero di ordini a sistema di ogni cliente
-	*/
 	@Test
 	@Transactional
 	void esCountOrdiniImp() {
