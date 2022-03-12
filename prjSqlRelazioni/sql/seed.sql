@@ -74,10 +74,10 @@ INSERT INTO cliente (id, cognome, nome, telefono, email, indirizzo, citta, provi
 (6, 'esposito', 'franco', '0119978812', 'francoe@icloud.com', 'Via Roma 3', 'Asti', 'At', 'Piemonte', 1875),
 (7, 'bruni', 'carlo', '0117778816', 'brunicarlo@icloud.com', 'Corso Stati Uniti 13', 'Torino', 'To', 'Piemonte', NULL);
 
-INSERT INTO impiegato (id, nome, cognome, ruolo, rif_to, stipendio, ufficio_id) VALUES
-(1, 'Mario', 'Rossi', 'tecnico', NULL, '2500.00', 1),
-(2, 'Marco', 'Bianchi', 'amministrativo', 7, '1600.00', 2),
-(3, 'Paolo', 'Verdi', 'amministrativo', 7, '1600.00', 2),
+INSERT INTO dipendente (id, rif_to, stipendio, ufficio_id) VALUES
+(1, NULL, '2500.00', 1),
+(2,7, '1600.00', 2),
+(3,7, '1600.00', 2);
 (4, 'Enrico', 'Marrone', 'venditore', 8, '1300.00', 3),
 (5, 'Nicola', 'Testa', 'venditore', 8, '1300.00', 3),
 (6, 'Franco', 'Barba', 'tecnico', 1, '1500.00', 1),

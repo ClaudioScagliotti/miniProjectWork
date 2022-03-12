@@ -1,13 +1,12 @@
 package it.es.gestionale;
 
+
 import java.util.List;
 
-
-
-import it.es.gestionale.model.ClienteEntity;
-import it.es.gestionale.model.OrdineEntity;
-import it.es.gestionale.repository.ClienteDB;
+import it.es.gestionale.model.UtenteEntity;
+import it.es.gestionale.repository.DipendenteDB;
 import it.es.gestionale.repository.OrdineDB;
+import it.es.gestionale.repository.UtenteDB;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,54 +17,20 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 class EsTestCliente {
 	@Autowired
-	ClienteDB db;
-	OrdineDB dbOrdini;
-
-	/*
-	 Elenca (mediante Sysout) gli ordini del cliente 4
-	*/
+	UtenteDB db;
 
 	@Test
 	@Transactional
-	void esCountOrdiniImp() {
+	void findUtenti() {
 
-		List<ClienteEntity> clienti =  db.findAll();
+		List<UtenteEntity> utenti =  db.findAll();
 		
 		System.out.println("--------------");
-		for(ClienteEntity cliente : clienti){
-			System.out.println("Numero ordini Cliente " + cliente.getNome() + ": " + cliente.getOrdini().size());
+		for(UtenteEntity utente : utenti){
+			if(utente.getRuolo().equals("impiegato"))
+			System.out.println(utente.getEmail() + utente.getDipendente().getStipendio());
 		}
 		System.out.println("--------------");
 
-		
 	}
-
-	/*
-	 Mostra il numero di articoli in ogni ordine del cliente 3
-	*/
-	@Test
-	void esSumVenduto() {
-
-		int idImpiegato=6;
-		assertTrue(false);
-		
-	}
-
-	/*
-	 Mostra il l'utente con il più alto numero di ordini
-	*/
-	@Test
-	void esCountOrdiniAllImp() {
-		assertTrue(false);
-		
-	}
-
-
-
-
-
-
-
-
-
 }

@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "ordine")
@@ -23,14 +22,10 @@ public class OrdineEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	//cliente
-
-	//impiegato
 	@ManyToOne
-	@JoinColumn(name="impiegato_id")
-	private ImpiegatoEntity impiegato;
+	@JoinColumn(name="dipendente_id")
+	private DipendenteEntity dipendente;
 
-	//dettaglio per articoli
 
 	@Column(name="data")
 	private Date data;
@@ -39,8 +34,8 @@ public class OrdineEntity {
 	private String consegna;
 
 	@ManyToOne
-	@JoinColumn(name = "cliente_id")
-	private ClienteEntity cliente;
+	@JoinColumn(name = "utente_id")
+	private UtenteEntity utente;
 
 
 	@OneToMany(mappedBy ="ordine")
@@ -77,21 +72,18 @@ public class OrdineEntity {
 	public void setDettagli(List<DettaglioEntity> dettagli) {
 		this.dettagli = dettagli;
 	}
-	public ClienteEntity getCliente() {
-		return cliente;
+	public UtenteEntity getUtente() {
+		return utente;
 	}
 
-	public void setCliente(ClienteEntity cliente) {
-		this.cliente = cliente;
+	public void setUtente(UtenteEntity utente) {
+		this.utente = utente;
 	}
 
 	@Override
 	public String toString() {
-		return "OrdineEntity [cliente=" + cliente + ", consegna=" + consegna + ", data=" + data + ", id=" + id + "]";
+		return "OrdineEntity [consegna=" + consegna + ", data=" + data + ", dettagli=" + dettagli + ", dipendente="
+				+ dipendente + ", id=" + id + ", utente=" + utente + "]";
 	}
-
-
-	
-
 	
 }
