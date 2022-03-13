@@ -13,12 +13,15 @@ public class DipendenteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    
-    @OneToOne(mappedBy = "utente")
-    private int utente_id;
+
+    private String nome;
+    private String cognome;
 
     private int rif_to;
     private double stipendio;
+
+    @OneToOne(mappedBy = "utente")
+    private int utente_id;
 
     @OneToOne(mappedBy = "ufficio")
     private int ufficio_id;
@@ -63,12 +66,30 @@ public class DipendenteEntity {
         this.ufficio_id = ufficio_id;
     }
 
-    @Override
-    public String toString() {
-        return "DipendenteEntity [id=" + id + ", rif_to=" + rif_to + ", stipendio=" + stipendio + ", ufficio_id="
-                + ufficio_id + ", utente_id=" + utente_id + "]";
+
+    public String getNome() {
+        return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    @Override
+    public String toString() {
+        return "DipendenteEntity [cognome=" + cognome + ", id=" + id + ", nome=" + nome + ", rif_to=" + rif_to
+                + ", stipendio=" + stipendio + ", ufficio_id=" + ufficio_id + ", utente_id=" + utente_id + "]";
+    }
+
+  
     
 
 }
