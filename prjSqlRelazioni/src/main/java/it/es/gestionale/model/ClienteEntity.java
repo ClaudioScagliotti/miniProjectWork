@@ -29,6 +29,9 @@ public class ClienteEntity {
     @OneToOne
     @JoinColumn(name="utente_id")
     private UtenteEntity utente;
+
+	@OneToMany(mappedBy ="cliente")
+	private List<OrdineEntity> ordini;
     
     
     public ClienteEntity() {

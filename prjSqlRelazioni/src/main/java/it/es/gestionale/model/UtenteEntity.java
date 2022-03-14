@@ -31,9 +31,6 @@ public class UtenteEntity {
     @OneToOne(mappedBy = "utente")
     private ClienteEntity cliente;
 
-    @OneToMany(mappedBy = "utente")
-    private List<OrdineEntity> ordini;
-
     public UtenteEntity(){
         
     }
@@ -44,14 +41,6 @@ public class UtenteEntity {
 
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
-    }
-    
-    public void setOrdini(List<OrdineEntity> ordini) {
-        this.ordini = ordini;
-    }
-
-    public List<OrdineEntity> getOrdini() {
-        return ordini;
     }
 
 	public int getId() {
@@ -97,7 +86,7 @@ public class UtenteEntity {
 	@Override
 	public String toString() {
 		return "UtenteEntity [id=" + id + ", email=" + email + ", password=" + password + ", ruolo=" + ruolo
-				+ ", dipendente=" + dipendente + ", cliente=" + cliente + ", ordini=" + ordini + "]";
+				+ ", dipendente=" + dipendente + ", cliente=" + cliente + "]";
 	}
 
 }
