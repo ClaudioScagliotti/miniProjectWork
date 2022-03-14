@@ -26,14 +26,27 @@ public class DipendenteService {
     }
 
     public List<DipendenteEntity> getDipendentiByCognome(){
-        return dipDB.findByCognome();
+        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
+            return dipDB.findByCognome();
+        }
+        return null;
     }
 
     public List<DipendenteEntity> getDipendentiByRuolo(){
-        return dipDB.findByRuolo();
+        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
+            return dipDB.findByRuolo();
+        }
+        
+
+        return null;
     }
 
     public List<DipendenteEntity> getDipendentiByStipendio(double min,double max){
-        return dipDB.findByStipendioBetween(min,max);
+        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
+            return dipDB.findByStipendioBetween(min,max);
+        }
+        
+
+        return null;
     }
 }
