@@ -17,8 +17,8 @@ public class DipendenteService {
     DipendenteEntity dipente;
 
     public List<DipendenteEntity> getDipendentiByNome(){
-        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
-            return dipDB.findByNome();
+        if(dipente.getUtente().getRuolo().equals("supervisore")){
+            return dipDB.findAllByOrderByNome();
         }
 
         return null;
@@ -26,23 +26,15 @@ public class DipendenteService {
     }
 
     public List<DipendenteEntity> getDipendentiByCognome(){
-        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
-            return dipDB.findByCognome();
+        if(dipente.getUtente().getRuolo().equals("supervisore")){
+            return dipDB.findAllByOrderByCognome();
         }
         return null;
     }
 
-    public List<DipendenteEntity> getDipendentiByRuolo(){
-        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
-            return dipDB.findByRuolo();
-        }
-        
-
-        return null;
-    }
 
     public List<DipendenteEntity> getDipendentiByStipendio(double min,double max){
-        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
+        if(dipente.getUtente().getRuolo().equals("supervisore")){
             return dipDB.findByStipendioBetween(min,max);
         }
         

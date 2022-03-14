@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,22 +22,21 @@ public class DipendenteEntity {
     private int rif_to;
     private double stipendio;
 
-    @OneToOne(mappedBy = "utente")
-	@JoinColumn(name ="id")
-    private UtenteEntity utente_id;
+    @OneToOne
+	@JoinColumn(name ="utente_id",referencedColumnName = "id")
+    private UtenteEntity utente;
 
-
-	@OneToOne(mappedBy = "ufficio")
-	@JoinColumn(name = "id")
-    private int ufficio_id;
+	@ManyToOne
+	@JoinColumn(name = "ufficio_id")
+    private UfficioEntity ufficio;
 	
 
-	public UtenteEntity getUtente_id() {
-		return utente_id;
+	public UtenteEntity getUtente() {
+		return utente;
 	}
 
-	public void setUtente_id(UtenteEntity utente_id) {
-		this.utente_id = utente_id;
+	public void setUtente_id(UtenteEntity utente) {
+		this.utente = utente;
 	}
 
     public int getId() {
@@ -65,12 +65,12 @@ public class DipendenteEntity {
         this.stipendio = stipendio;
     }
 
-    public int getUfficio_id() {
-        return ufficio_id;
+    public UfficioEntity getUfficio_id() {
+        return ufficio;
     }
 
-    public void setUfficio_id(int ufficio_id) {
-        this.ufficio_id = ufficio_id;
+    public void setUfficio_id(UfficioEntity ufficio) {
+        this.ufficio = ufficio;
     }
 
 
@@ -93,7 +93,7 @@ public class DipendenteEntity {
     @Override
     public String toString() {
         return "DipendenteEntity [cognome=" + cognome + ", id=" + id + ", nome=" + nome + ", rif_to=" + rif_to
-                + ", stipendio=" + stipendio + ", ufficio_id=" + ufficio_id + ", utente_id=" + utente_id + "]";
+                + ", stipendio=" + stipendio + ", ufficio_id=" + ufficio + ", utente_id=" + utente + "]";
     }
 
   

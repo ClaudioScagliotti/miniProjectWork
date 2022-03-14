@@ -11,11 +11,9 @@ import it.es.gestionale.model.DipendenteEntity;
 @Repository
 public interface DipendenteDB extends JpaRepository<DipendenteEntity, Integer>{
 	
-    public List<DipendenteEntity> findByNome();
+    public List<DipendenteEntity> findAllByOrderByNome();
 
-    public List<DipendenteEntity> findByCognome();
-
-    public List<DipendenteEntity> findByRuolo();
+    public List<DipendenteEntity> findAllByOrderByCognome();
 
     public List<DipendenteEntity> findByStipendioBetween(double min,double max);
 
