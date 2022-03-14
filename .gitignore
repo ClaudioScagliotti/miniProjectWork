@@ -1,0 +1,14 @@
+hs_err_pid*
+
+## my ignores
+#Eclipse & Eclipse JDT
+*.metadata 
+*.project 
+*.classpath
+*.prefs
+*.sonarlint
+#java test files -> bug
+*attach_pid*
+
+### VS Code ###
+.vscode/

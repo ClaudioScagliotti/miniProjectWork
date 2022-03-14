@@ -8,5 +8,5 @@ import it.es.gestionale.model.UtenteEntity;
 
 @Repository
 public interface UtenteDB extends JpaRepository<UtenteEntity, Integer>{
-	
+		
 }

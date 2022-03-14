@@ -99,4 +99,5 @@ public class UtenteEntity {
 		return "UtenteEntity [id=" + id + ", email=" + email + ", password=" + password + ", ruolo=" + ruolo
 				+ ", dipendente=" + dipendente + ", cliente=" + cliente + ", ordini=" + ordini + "]";
 	}
+
 }

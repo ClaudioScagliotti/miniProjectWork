@@ -38,12 +38,12 @@ public class UtenteMVC {
 	@PostMapping("/login-utente") 
 	public String loginUtente(@ModelAttribute UtenteEntity utenteForm, Model model, HttpSession session) {
 		
-		System.out.println("utente form: " + utenteForm); // vedi consolese
+		 // vedi consolese
 		
 		try {
 			
 			UtenteEntity utente = usrv.login(utenteForm); // restituisce utente se esiste, altrim lancia eccezione
-			
+			System.out.println("utente: " + utente);
 			session.setAttribute("utente", utente); // aggiungo l'istanza dell'utente loggato alla sessione
 			switch(utente.getRuolo()) {
 			
