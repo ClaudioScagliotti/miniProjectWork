@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import it.es.gestionale.model.ClienteEntity;
 
-
 @Repository
-public interface ClienteDB extends JpaRepository<ClienteEntity, Integer>{
-	
+public interface ClienteDB extends JpaRepository<ClienteEntity, Integer> {
+
 }
