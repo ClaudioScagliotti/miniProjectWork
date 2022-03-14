@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,10 +22,22 @@ public class DipendenteEntity {
     private double stipendio;
 
     @OneToOne(mappedBy = "utente")
-    private int utente_id;
+	@JoinColumn(name ="id")
+    private UtenteEntity utente_id;
 
-    @OneToOne(mappedBy = "ufficio")
+
+	@OneToOne(mappedBy = "ufficio")
+	@JoinColumn(name = "id")
     private int ufficio_id;
+	
+
+	public UtenteEntity getUtente_id() {
+		return utente_id;
+	}
+
+	public void setUtente_id(UtenteEntity utente_id) {
+		this.utente_id = utente_id;
+	}
 
     public int getId() {
         return id;
@@ -34,13 +47,7 @@ public class DipendenteEntity {
         this.id = id;
     }
 
-    public int getUtente_id() {
-        return utente_id;
-    }
-
-    public void setUtente_id(int utente_id) {
-        this.utente_id = utente_id;
-    }
+   
 
     public int getRif_to() {
         return rif_to;

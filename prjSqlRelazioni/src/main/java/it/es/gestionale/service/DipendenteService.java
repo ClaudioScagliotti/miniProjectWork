@@ -17,8 +17,12 @@ public class DipendenteService {
     DipendenteEntity dipente;
 
     public List<DipendenteEntity> getDipendentiByNome(){
-        if(dipente.getUtente_id() != 0){}
-        return dipDB.findByNome();
+        if(dipente.getUtente_id().getRuolo().equals("supervisore")){
+            return dipDB.findByNome();
+        }
+
+        return null;
+        
     }
 
     public List<DipendenteEntity> getDipendentiByCognome(){
