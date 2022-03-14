@@ -17,4 +17,33 @@ public class ClienteService {
 	public List<ClienteEntity> getAll(){
 		return cDB.findAll();
 	}
+	
+	public ClienteEntity getCliente(int id) {
+		
+		return cDB.findById(id).get();
+	}
+	
+	public void updCliente(ClienteEntity c) {
+		
+		cDB.save(c);
+	}
+	
+	public List<ClienteEntity> getClienteByNome(String nome) {
+		
+		return cDB.findByNome(nome);
+	}
+	
+	public List<ClienteEntity> getClienteByCognome(String cognome) {
+			
+			return cDB.findByCognome(cognome);
+		}
+	
+	public List<ClienteEntity> getClienteByTelefono(String telefono) {
+		
+	return cDB.findByTelefono(telefono);
+}
+
+
+	
+	
 }

@@ -34,9 +34,8 @@ public class OrdineEntity {
 	private String consegna;
 
 	@ManyToOne
-	@JoinColumn(name = "utente_id")
+	@JoinColumn(name = "cliente_id")
 	private UtenteEntity utente;
-
 
 	@OneToMany(mappedBy ="ordine")
 	private List<DettaglioEntity> dettagli;
@@ -82,8 +81,8 @@ public class OrdineEntity {
 
 	@Override
 	public String toString() {
-		return "OrdineEntity [consegna=" + consegna + ", data=" + data + ", dettagli=" + dettagli + ", dipendente="
-				+ dipendente + ", id=" + id + ", utente=" + utente + "]";
+		return "OrdineEntity [id=" + id + ", dipendente=" + dipendente + ", data=" + data + ", consegna=" + consegna
+				+ "]";
 	}
-	
+
 }

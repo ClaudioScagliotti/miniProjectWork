@@ -52,8 +52,7 @@ public class UfficioEntity {
 
 	@Override
 	public String toString() {
-		return "UfficioEntity [id=" + id + ", impiegati=" + impiegati + ", nome=" + nome + "]";
+		return "UfficioEntity [id=" + id + ", nome=" + nome + ", impiegati=" + impiegati + "]";
 	}
 
-	
 }

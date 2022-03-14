@@ -1,10 +1,13 @@
 package it.es.gestionale.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +29,7 @@ public class ClienteEntity {
     @OneToOne
     @JoinColumn(name="utente_id")
     private UtenteEntity utente;
+    
     
     public ClienteEntity() {
 	}
@@ -106,7 +110,6 @@ public class ClienteEntity {
 	public String toString() {
 		return "ClienteEntity [id=" + id + ", cognome=" + cognome + ", nome=" + nome + ", telefono=" + telefono
 				+ ", indirizzo=" + indirizzo + ", citta=" + citta + ", provincia=" + provincia + ", regione=" + regione
-				+ ", utente=" + utente + "]";
+				+ "]";
 	}
-	
 }
