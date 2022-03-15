@@ -28,19 +28,19 @@ public class ClienteService {
 		return cDB.findById(id).get();
 	}
 	
-	public List<ClienteEntity> getClienteByNome(String nome) {
+	public List<ClienteJoin> getClienteByNome(String nome) {
 		
-		return cDB.findByNome(nome);
+		return cjDB.findByNome(nome);
 	}
 	
-	public List<ClienteEntity> getClienteByCognome(String cognome) {
+	public List<ClienteJoin> getClienteByCognome(String cognome) {
 			
-			return cDB.findByCognome(cognome);
+			return cjDB.findByCognome(cognome);
 		}
 	
-	public List<ClienteEntity> getClienteByTelefono(String telefono) {
+	public List<ClienteJoin> getClienteByTelefono(String telefono) {
 		
-	return cDB.findByTelefono(telefono);
+	return cjDB.findByTelefono(telefono);
 }
 	public ClienteJoin getClienteByEmail(String email) {
 		
@@ -55,6 +55,11 @@ public class ClienteService {
 	public ClienteEntity updateCliente (ClienteEntity cliente) {
 		return cDB.save(cliente);
 	}
+
+	public void addCliente(ClienteEntity c) {
+		this.cDB.save(c);
+	
+		}
 
 
 	

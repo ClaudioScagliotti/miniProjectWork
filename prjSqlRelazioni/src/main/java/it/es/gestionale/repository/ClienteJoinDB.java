@@ -9,5 +9,8 @@ import it.es.gestionale.model.ClienteJoin;
 public interface ClienteJoinDB extends JpaRepository<ClienteJoin, Integer> {
 	
 	ClienteJoin findByEmail(String email);
+	List<ClienteJoin> findByNome(String nome);
+	List<ClienteJoin> findByCognome(String cognome);
+	List<ClienteJoin> findByTelefono(String telefono);
 
 }

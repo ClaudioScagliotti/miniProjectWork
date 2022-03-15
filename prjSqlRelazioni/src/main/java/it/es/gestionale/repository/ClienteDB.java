@@ -19,4 +19,5 @@ public interface ClienteDB extends JpaRepository<ClienteEntity, Integer> {
 	
 	
 	
+	
 }
