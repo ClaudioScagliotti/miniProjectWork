@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name ="cliente")
 public class ClienteEntity {
@@ -26,11 +28,14 @@ public class ClienteEntity {
     private String citta;
     private String provincia;
     private String regione;
+    
     @OneToOne
     @JoinColumn(name="utente_id")
+    @JsonIgnore
     private UtenteEntity utente;
 
 	@OneToMany(mappedBy ="cliente")
+	@JsonIgnore
 	private List<OrdineEntity> ordini;
     
     
