@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="clientejoin")
 public class ClienteJoin {
 	
-	/*nome, cognome, telefono o email*/
+	
 	
 	
 	@Id
@@ -20,7 +20,10 @@ public class ClienteJoin {
 	private String nome;
 	private String cognome;
 	private String telefono;
-	
+	private String indirizzo;
+    private String citta;
+    private String provincia;
+    private String regione;
 	
 	private String email;
 
@@ -50,14 +53,6 @@ public class ClienteJoin {
 		this.telefono = telefono;
 	}
 
-    
-    
-    
-
-    
-
-
-
 	public String getCognome() {
 		return cognome;
 	}
@@ -83,6 +78,38 @@ public class ClienteJoin {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+	public String getCitta() {
+		return citta;
+	}
+
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getRegione() {
+		return regione;
+	}
+
+	public void setRegione(String regione) {
+		this.regione = regione;
 	}
 
     
