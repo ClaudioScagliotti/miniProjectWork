@@ -47,11 +47,12 @@ public class ClienteREST {
 		return cServ.getClienteByTelefono(telefono);
 	}
 	
-	@GetMapping("/lista")
+	/*@GetMapping("/lista")
 	public List<ClienteEntity> getAll(){
 		return cServ.getAll();
-	}
-	@GetMapping("/lista/all")
+	}*/
+
+	@GetMapping("/lista")
 	public List<ClienteJoin> getAllClienteJoin(){
 		return cServ.getAllClienteJoin();
 	}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>SONO SUPERVISORE</h2>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">nome</th>
+                <th scope="col">cognome</th>
+                <th scope="col">email</th>
+                <th scope="col">telefono</th>
+                <th scope="col">indirizzo</th>
+                <th scope="col">città</th>
+                <th scope="col">provincia</th>
+                <th scope="col">regione</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody id="table_rows">
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{nome}}</td>
+                <td>{{cognome}}</td>
+                <td>{{email}}</td>
+                <td>{{telefono}}</td>
+                <td>{{indirizzo}}</td>
+                <td>{{citta}}</td>
+                <td>{{provincia}}</td>
+                <td>{{regione}}</td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-primary edit-song" data-song-id="{{id}}" data-song-title="{{title}}" data-song-author="{{author}}" data-song-composer="{{composer}}">edit</button> 
+                    <button type="button" class="btn btn-sm btn-danger delete-song" data-song-id="{{id}}" data-song-title="{{title}}">delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+    <script src="js/supervisoreClienti.js"></script>
+</body>
+</html>
