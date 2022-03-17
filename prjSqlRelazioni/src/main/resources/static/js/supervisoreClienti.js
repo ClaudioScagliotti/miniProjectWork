@@ -4,8 +4,9 @@ const url="http://localhost:8080/api/cliente/";
 let template_riga = "";
 let selectFiltro = document.getElementById("select_filtro");
 let inputFiltro = document.getElementById("inputFiltro");
+let all_inputs = null;
+let modal = null;
 
-listaClienti();
 
 function listaClienti(event){
 
@@ -33,7 +34,7 @@ function listaClienti(event){
 			}
 		
 		document.getElementById("table_rows").innerHTML = rows;
-		
+		agganciaEventi();
 	})
 	.catch(function(err) { 
 			alert(err);
@@ -73,33 +74,132 @@ function getByFilter(event){
 
 }
 
-/*function createCliente(event){
+function createCliente(event){
+	all_inputs = document.getElementsByClassName("clienteForm");
+		for(let li=0; li<all_inputs.length; li++){
+			all_inputs[li].value = "";
+		}
 	
 	
+
+	console.log(document.getElementById("nomeCliente").value);
 	fetch(url, {
 	  method: 'POST',
-	  
-	  body: JSON.stringify(data),
+	  headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    },
+	  body: JSON.stringify({
+		  
+        nome: document.getElementById("nomeCliente").value,
+        cognome: document.getElementById("cognomeCliente").value,
+        indirizzo: document.getElementById("indirizzoCliente").value,
+        telefono: document.getElementById("telefonoCliente").value,
+        regione: document.getElementById("regioneCliente").value,
+        provincia: document.getElementById("provinciaCliente").value,
+        citta: document.getElementById("cittaCliente").value,
+		
+       
+    }),
 	})
 	.then(response => response.json())
-	.then(data => {
-	  console.log('Success:', data);
-	})
+	
 	.catch((error) => {
+		
 	  console.error('Error:', error);
 	});
-}*/
+	agganciaEventi();
+}
 
+function editInsertCliente(event){
+	all_inputs = document.getElementsByClassName("clienteForm");
+		for(let li=0; li<all_inputs.length; li++){
+			all_inputs[li].value = "";
+		}	
 
+	let originator = event.currentTarget;
+	let idCliente = originator.getAttribute('cliente-id');
+
+	console.log(idCliente);
+
+	fetch(url+idCliente)
+		.then(function(response){
+			return response.json();
+		})
+		.then(function(json){
+			console.log(json);
+				
+			document.getElementById("nomeCliente").value = json.nome; 
+			document.getElementById("cognomeCliente").value = json.cognome; 
+			document.getElementById("indirizzoCliente").value = json.indirizzo; 
+			document.getElementById("telefonoCliente").value = json.telefono; 
+			document.getElementById("regioneCliente").value = json.regione; 
+			document.getElementById("provinciaCliente").value = json.provincia; 
+			document.getElementById("cittaCliente").value = json.citta; 
+			
+
+			})
+		.catch(function(err) { 
+			alert(err);
+			console.log('Failed to fetch page: ', err);
+		})
+
+		agganciaEventi();
+}
+
+function editCliente(event){
+	
+	console.log(document.getElementById("nomeCliente").value);
+	fetch(url, {
+	  method: 'PUT',
+	  headers: {
+        "Content-type": "application/json; charset=UTF-8"
+    },
+	  body: JSON.stringify({
+		  
+        nome: document.getElementById("nomeCliente").value,
+        cognome: document.getElementById("cognomeCliente").value,
+        indirizzo: document.getElementById("indirizzoCliente").value,
+        telefono: document.getElementById("telefonoCliente").value,
+        regione: document.getElementById("regioneCliente").value,
+        provincia: document.getElementById("provinciaCliente").value,
+        citta: document.getElementById("cittaCliente").value,
+		
+       
+    }),
+	})
+	.then(response => response.json())
+	
+	.catch((error) => {
+		
+	  console.error('Error:', error);
+	});
+}
+
+function agganciaEventi(){
+	let editButton = document.getElementsByClassName("editButton");
+	for(let li=0; li<editButton.length; li++){
+	editButton[li].addEventListener("click", editInsertCliente);	
+	}
+}
 window.addEventListener(
 	'DOMContentLoaded', 
 	function(event){
 
+	modal = new bootstrap.Modal(document.getElementById('exampleModal'), {});
+		
 	template_riga = document.getElementById("table_rows").innerHTML;	
 	
 	let selectButton = document.getElementById("selectButton");
 	selectButton.addEventListener("click", getByFilter);
 
+	let createButton = document.getElementById("createButton");
+	createButton.addEventListener("click", createCliente);
 
+	let editButton = document.getElementsByClassName("editButton");
+	for(let li=0; li<editButton.length; li++){
+	editButton[li].addEventListener("click", editInsertCliente);	
+	}
+	
+	listaClienti(null);
     
 });

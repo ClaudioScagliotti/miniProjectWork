@@ -54,7 +54,7 @@
                 <td>{{provincia}}</td>
                 <td>{{regione}}</td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary edit-song" data-song-id="{{id}}" data-song-title="{{title}}" data-song-author="{{author}}" data-song-composer="{{composer}}">edit</button> 
+                    <button type="button" class="btn btn-sm btn-primary editButton" cliente-id="{{id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">edit</button> 
                     <button type="button" class="btn btn-sm btn-danger delete-song" data-song-id="{{id}}" data-song-title="{{title}}">delete</button>
                 </td>
             </tr>
@@ -76,32 +76,32 @@
         <div class="modal-body">
             <form>
                 <div class="mb-3">
-                  <label for="nome" class="form-label">Nome</label>
-                  <input type="text" class="form-control" id="nomeCliente" aria-describedby="emailHelp">
+                  <label for="nome" class="form-label ">Nome</label>
+                  <input type="text" class="form-control clienteForm" id="nomeCliente" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="cognome" class="form-label">Cognome</label>
-                  <input type="text" class="form-control" id="cognomeCliente" aria-describedby="emailHelp">
+                  <input type="text" class="form-control clienteForm" id="cognomeCliente" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="indirizzo" class="form-label">Indirizzo</label>
-                  <input type="text" class="form-control" id="indirizzoCliente" aria-describedby="emailHelp">
+                  <input type="text" class="form-control clienteForm" id="indirizzoCliente" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="telefono" class="form-label">Telefono</label>
-                  <input type="text" class="form-control" id="telefonoCliente" aria-describedby="emailHelp">
+                  <input type="text" class="form-control clienteForm" id="telefonoCliente" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="regione" class="form-label">Regione</label>
-                  <input type="text" class="form-control" id="regioneCliente" aria-describedby="emailHelp">
+                  <input type="text" class="form-control clienteForm" id="regioneCliente" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="provinciaCliente" class="form-label">Provincia</label>
-                  <input type="text" class="form-control" id="provinciaCliente" aria-describedby="emailHelp">
+                  <input type="text" class="form-control clienteForm" id="provinciaCliente" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="cittaCliente" class="form-label">Citta'</label>
-                  <input type="text" class="form-control" id="cittaCliente" aria-describedby="emailHelp">
+                  <input type="text" class="form-control clienteForm" id="cittaCliente" aria-describedby="emailHelp">
                 </div>
                 
 
@@ -110,7 +110,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button id="createButton" type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
