@@ -55,9 +55,12 @@ public class UtenteMVC {
 				
 			case "supervisore":
 				return "redirect:/supervisore.html";
+			
+			default:
+				return "redirect:/login";
 			}
 			
-			return "redirect:/login";			
+					
 			//return redirect consente di richiamare una rotta mappata all'interno di un controller
 			//In questo caso chiediamo di dirigerci nella get mappata sotto lista-prodotti
 			

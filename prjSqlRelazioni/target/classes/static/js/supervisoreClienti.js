@@ -73,6 +73,23 @@ function getByFilter(event){
 
 }
 
+/*function createCliente(event){
+	
+	
+	fetch(url, {
+	  method: 'POST',
+	  
+	  body: JSON.stringify(data),
+	})
+	.then(response => response.json())
+	.then(data => {
+	  console.log('Success:', data);
+	})
+	.catch((error) => {
+	  console.error('Error:', error);
+	});
+}*/
+
 
 window.addEventListener(
 	'DOMContentLoaded', 

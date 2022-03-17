@@ -42,7 +42,7 @@ public class ClienteService {
 		
 	return cjDB.findByTelefono(telefono);
 }
-	public ClienteJoin getClienteByEmail(String email) {
+	public List<ClienteJoin> getClienteByEmail(String email) {
 		
 		return cjDB.findByEmail(email);
 	}

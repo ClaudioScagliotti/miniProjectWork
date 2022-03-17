@@ -58,7 +58,7 @@ public class ClienteREST {
 	}
 	
 	@GetMapping("/email/{email}")
-	public ClienteJoin getByEmail(@PathVariable("email") String email) {
+	public List<ClienteJoin> getByEmail(@PathVariable("email") String email) {
 		return cServ.getClienteByEmail(email);
 	}
 	
