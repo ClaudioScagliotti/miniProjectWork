@@ -76,7 +76,7 @@ function getByFilter(event){
 
 function createCliente(event){
 			
-	svuotaModale();
+	
 
 	console.log(document.getElementById("nomeCliente").value);
 	fetch(url, {
@@ -105,6 +105,7 @@ function createCliente(event){
 	  console.error('Error:', error);
 	});
 	agganciaEventi();
+	svuotaModale();
 }
 
 function editInsertCliente(event){
@@ -189,7 +190,7 @@ function agganciaEventi(){
 
 function svuotaModale(){
 
-	document.getElementById("nomeCliente").innerHTML = ""; 
+	document.getElementById("nomeCliente").value = ""; 
 	document.getElementById("cognomeCliente").value = ""; 
 	document.getElementById("indirizzoCliente").value = ""; 
 	document.getElementById("telefonoCliente").value = ""; 
