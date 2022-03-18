@@ -1,1 +1,6 @@
 @charset "ISO-8859-1";
+
+.modal-body{
+    height: 100%;
+    overflow-y: scroll;
+}

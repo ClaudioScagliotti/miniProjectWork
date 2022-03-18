@@ -75,10 +75,10 @@ function getByFilter(event){
 }
 
 function chiamaModale(event){
-	alert("sonoqui");
-	console.log("sonoquiiiiiii");
-svuotaModale();
-createCliente();
+	event.stopPropagation();
+	svuotaModale();
+	modal.show();
+	
 
 }
 
@@ -107,20 +107,21 @@ function createCliente(event){
 	
 	})
 	.then(response => response.json())
-	
+		listaClienti()
+		modal.hide()
+		svuotaModale()
+		
+
 	.catch((error) => {
 		
 	  console.error('Error:', error);
 	});
+	
 	agganciaEventi();
-	svuotaModale();
 }
 
 function editInsertCliente(event){
-	/*all_inputs = document.getElementsByClassName("clienteForm");
-		for(let li=0; li<all_inputs.length; li++){
-			all_inputs[li].value = "";
-		}*/	
+
 
 	let originator = event.currentTarget;
 	let idCliente = originator.getAttribute('cliente-id');
@@ -175,20 +176,20 @@ function editCliente(event){
         citta: document.getElementById("cittaCliente").value,
 		utente:{
 			id: document.getElementById("utenteCliente").value
-		}
-		
-       
+		}		       
     }),
 	})
 	.then(response => response.json())
-	
+		listaClienti()	
+		modal.hide()
+		svuotaModale()
+		
 	.catch((error) => {
 		
 	  console.error('Error:', error);
 	});
 
 	agganciaEventi();
-	svuotaModale();
 }
 
 function agganciaEventi(){
@@ -200,6 +201,7 @@ function agganciaEventi(){
 
 function svuotaModale(){
 
+	document.getElementById("idCliente").value = "";
 	document.getElementById("nomeCliente").value = ""; 
 	document.getElementById("cognomeCliente").value = ""; 
 	document.getElementById("indirizzoCliente").value = ""; 
