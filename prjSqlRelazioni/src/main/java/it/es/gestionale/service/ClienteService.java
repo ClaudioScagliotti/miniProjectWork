@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import it.es.gestionale.model.ClienteEntity;
 import it.es.gestionale.model.ClienteJoin;
+import it.es.gestionale.model.UtenteEntity;
 import it.es.gestionale.repository.ClienteDB;
 import it.es.gestionale.repository.ClienteJoinDB;
 
@@ -59,6 +60,10 @@ public class ClienteService {
 	public void addCliente(ClienteEntity c) {
 		this.cDB.save(c);
 	
+		}
+		public ClienteEntity getClienteByUtente(UtenteEntity utente) {
+		
+			return cDB.findByUtente(utente);
 		}
 
 

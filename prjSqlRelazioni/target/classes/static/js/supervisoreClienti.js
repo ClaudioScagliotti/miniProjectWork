@@ -74,6 +74,14 @@ function getByFilter(event){
 
 }
 
+function chiamaModale(event){
+	alert("sonoqui");
+	console.log("sonoquiiiiiii");
+svuotaModale();
+createCliente();
+
+}
+
 function createCliente(event){
 			
 	
@@ -145,6 +153,7 @@ function editInsertCliente(event){
 
 		agganciaEventi();
 		
+		
 }
 
 function editCliente(event){
@@ -179,6 +188,7 @@ function editCliente(event){
 	});
 
 	agganciaEventi();
+	svuotaModale();
 }
 
 function agganciaEventi(){
@@ -211,7 +221,7 @@ window.addEventListener(
 	selectButton.addEventListener("click", getByFilter);
 
 	let createButton = document.getElementById("createButton");
-	createButton.addEventListener("click", createCliente);
+	createButton.addEventListener("click", chiamaModale);
 
 	let updateButton = document.getElementById("updateButton");
 	updateButton.addEventListener("click", editCliente);
