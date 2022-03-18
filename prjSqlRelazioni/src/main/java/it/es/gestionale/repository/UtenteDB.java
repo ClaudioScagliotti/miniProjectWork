@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import it.es.gestionale.model.ImpiegatoEntity;
+import it.es.gestionale.model.UtenteEntity;
+
 
 @Repository
 public interface ImpiegatoDB extends JpaRepository<ImpiegatoEntity, Integer>{

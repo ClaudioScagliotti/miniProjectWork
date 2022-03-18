@@ -21,21 +21,17 @@ public class UfficioEntity {
 	@Column(name="nome", length = 50, nullable = true)
 	private String nome;
 	
-	@Column(name="luogo_id", length = 100, nullable = true)
-	private String luogo;
-
 	@OneToMany(mappedBy ="ufficio")
-	private List<ImpiegatoEntity> impiegati;
+	private List<DipendenteEntity> impiegati;
 
-	public List<ImpiegatoEntity> getImpiegati(){
+	public List<DipendenteEntity> getImpiegati(){
 		return impiegati;
 	}
 	
 	public UfficioEntity() {}
 	
-	public UfficioEntity(String nome, String luogo) {
+	public UfficioEntity(String nome) {
 		this.nome = nome;
-		this.luogo = luogo;
 	}
 
 	public int getId() {
@@ -54,20 +50,9 @@ public class UfficioEntity {
 		this.nome = nome;
 	}
 
-	public String getLuogo() {
-		return luogo;
-	}
-
-	public void setLuogo(String luogo) {
-		this.luogo = luogo;
-	}
-
 	@Override
 	public String toString() {
-		return "UfficioEntity [id=" + id + ", impiegati=" + impiegati + ", luogo=" + luogo + ", nome=" + nome + "]";
+		return "UfficioEntity [id=" + id + ", nome=" + nome + ", impiegati=" + impiegati + "]";
 	}
 
-
-	
-	
 }

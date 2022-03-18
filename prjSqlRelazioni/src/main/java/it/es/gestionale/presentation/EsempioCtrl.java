@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import it.es.gestionale.model.EsempioModel;
 import it.es.gestionale.service.EsempioService;
 
 @Controller
 @RequestMapping("/lista-editori")
 @SessionAttributes("editore")
 public class EsempioCtrl {
-
+/*
 	@Autowired
 	EsempioService srv; // Autowired consente a Spring di capire se trattare un oggetto come un transient o un singleton
 
@@ -62,5 +61,5 @@ public class EsempioCtrl {
 		
 		return "redirect:/lista-editori";
 	}
-	
+	*/
 }

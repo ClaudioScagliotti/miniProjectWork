@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
+
 
 @Entity
 @Table(name = "ordine")
@@ -23,14 +23,10 @@ public class OrdineEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	//cliente
-
-	//impiegato
 	@ManyToOne
-	@JoinColumn(name="impiegato_id")
-	private ImpiegatoEntity impiegato;
+	@JoinColumn(name="dipendente_id")
+	private DipendenteEntity dipendente;
 
-	//dettaglio per articoli
 
 	@Column(name="data")
 	private Date data;
@@ -41,7 +37,6 @@ public class OrdineEntity {
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private ClienteEntity cliente;
-
 
 	@OneToMany(mappedBy ="ordine")
 	private List<DettaglioEntity> dettagli;
@@ -87,11 +82,8 @@ public class OrdineEntity {
 
 	@Override
 	public String toString() {
-		return "OrdineEntity [cliente=" + cliente + ", consegna=" + consegna + ", data=" + data + ", id=" + id + "]";
+		return "OrdineEntity [id=" + id + ", dipendente=" + dipendente + ", data=" + data + ", consegna=" + consegna
+				+ "]";
 	}
 
-
-	
-
-	
 }

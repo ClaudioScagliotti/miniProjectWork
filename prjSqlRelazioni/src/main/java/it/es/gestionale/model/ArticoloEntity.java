@@ -2,13 +2,14 @@ package it.es.gestionale.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "articolo")
@@ -24,7 +25,9 @@ public class ArticoloEntity {
 	private int rimanenza;
 	
 	@OneToMany(mappedBy ="articolo")
+	@JsonIgnore
 	private List<DettaglioEntity> dettagli;
+	
 	
 	public ArticoloEntity() {}
 
@@ -75,7 +78,6 @@ public class ArticoloEntity {
 	public void setRimanenza(int rimanenza) {
 		this.rimanenza = rimanenza;
 	}
-
 	public List<DettaglioEntity> getDettagli() {
 		return dettagli;
 	}
@@ -84,5 +86,9 @@ public class ArticoloEntity {
 		this.dettagli = dettagli;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "ArticoloEntity [id=" + id + ", descrizione=" + descrizione + ", prezzo=" + prezzo + ", categoria="
+				+ categoria + ", rimanenza=" + rimanenza + "]";
+	}
 }
