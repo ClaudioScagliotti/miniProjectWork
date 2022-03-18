@@ -76,6 +76,10 @@
         <div class="modal-body">
             <form>
                 <div class="mb-3">
+                  <label for="id" class="form-label ">Nome</label>
+                  <input type="number" class="form-control clienteForm" id="idCliente" aria-describedby="emailHelp" readonly>
+                </div>
+                <div class="mb-3">
                   <label for="nome" class="form-label ">Nome</label>
                   <input type="text" class="form-control clienteForm" id="nomeCliente" aria-describedby="emailHelp">
                 </div>
@@ -103,6 +107,10 @@
                   <label for="cittaCliente" class="form-label">Citta'</label>
                   <input type="text" class="form-control clienteForm" id="cittaCliente" aria-describedby="emailHelp">
                 </div>
+                <div class="mb-3">
+                  <label for="cittaCliente" class="form-label"></label>
+                  <input type="text" class="form-control clienteForm" id="utenteCliente" aria-describedby="emailHelp" hidden>
+                </div>
                 
 
               
@@ -110,7 +118,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button id="createButton" type="button" class="btn btn-primary">Save changes</button>
+          <button id="createButton" type="button" class="btn btn-primary">Add</button>
+          <button id="updateButton" type="button" class="btn btn-primary">Update</button>
         </div>
       </div>
     </div>

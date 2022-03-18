@@ -75,12 +75,8 @@ function getByFilter(event){
 }
 
 function createCliente(event){
-	all_inputs = document.getElementsByClassName("clienteForm");
-		for(let li=0; li<all_inputs.length; li++){
-			all_inputs[li].value = "";
-		}
-	
-	modal.show();
+			
+	svuotaModale();
 
 	console.log(document.getElementById("nomeCliente").value);
 	fetch(url, {
@@ -98,8 +94,9 @@ function createCliente(event){
         provincia: document.getElementById("provinciaCliente").value,
         citta: document.getElementById("cittaCliente").value,
 		
-       
+		
     }),
+	
 	})
 	.then(response => response.json())
 	
@@ -111,10 +108,10 @@ function createCliente(event){
 }
 
 function editInsertCliente(event){
-	all_inputs = document.getElementsByClassName("clienteForm");
+	/*all_inputs = document.getElementsByClassName("clienteForm");
 		for(let li=0; li<all_inputs.length; li++){
 			all_inputs[li].value = "";
-		}	
+		}*/	
 
 	let originator = event.currentTarget;
 	let idCliente = originator.getAttribute('cliente-id');
@@ -128,13 +125,15 @@ function editInsertCliente(event){
 		.then(function(json){
 			console.log(json);
 				
+			document.getElementById("idCliente").value = json.id; 
 			document.getElementById("nomeCliente").value = json.nome; 
 			document.getElementById("cognomeCliente").value = json.cognome; 
 			document.getElementById("indirizzoCliente").value = json.indirizzo; 
 			document.getElementById("telefonoCliente").value = json.telefono; 
 			document.getElementById("regioneCliente").value = json.regione; 
 			document.getElementById("provinciaCliente").value = json.provincia; 
-			document.getElementById("cittaCliente").value = json.citta; 
+			document.getElementById("cittaCliente").value = json.citta;
+			document.getElementById("utenteCliente").value = json.utente.id; 
 			
 
 			})
@@ -144,6 +143,7 @@ function editInsertCliente(event){
 		})
 
 		agganciaEventi();
+		
 }
 
 function editCliente(event){
@@ -155,7 +155,7 @@ function editCliente(event){
         "Content-type": "application/json; charset=UTF-8"
     },
 	  body: JSON.stringify({
-		  
+		id: document.getElementById("idCliente").value,  
         nome: document.getElementById("nomeCliente").value,
         cognome: document.getElementById("cognomeCliente").value,
         indirizzo: document.getElementById("indirizzoCliente").value,
@@ -163,6 +163,9 @@ function editCliente(event){
         regione: document.getElementById("regioneCliente").value,
         provincia: document.getElementById("provinciaCliente").value,
         citta: document.getElementById("cittaCliente").value,
+		utente:{
+			id: document.getElementById("utenteCliente").value
+		}
 		
        
     }),
@@ -173,6 +176,8 @@ function editCliente(event){
 		
 	  console.error('Error:', error);
 	});
+
+	agganciaEventi();
 }
 
 function agganciaEventi(){
@@ -180,6 +185,18 @@ function agganciaEventi(){
 	for(let li=0; li<editButton.length; li++){
 	editButton[li].addEventListener("click", editInsertCliente);	
 	}
+}
+
+function svuotaModale(){
+
+	document.getElementById("nomeCliente").innerHTML = ""; 
+	document.getElementById("cognomeCliente").value = ""; 
+	document.getElementById("indirizzoCliente").value = ""; 
+	document.getElementById("telefonoCliente").value = ""; 
+	document.getElementById("regioneCliente").value = ""; 
+	document.getElementById("provinciaCliente").value = ""; 
+	document.getElementById("cittaCliente").value = ""; 
+
 }
 window.addEventListener(
 	'DOMContentLoaded', 
@@ -194,6 +211,9 @@ window.addEventListener(
 
 	let createButton = document.getElementById("createButton");
 	createButton.addEventListener("click", createCliente);
+
+	let updateButton = document.getElementById("updateButton");
+	updateButton.addEventListener("click", editCliente);
 
 	let editButton = document.getElementsByClassName("editButton");
 	for(let li=0; li<editButton.length; li++){

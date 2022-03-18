@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name ="utente")
 @Scope("Session")
@@ -29,6 +31,7 @@ public class UtenteEntity {
 	private DipendenteEntity dipendente;
     
     @OneToOne(mappedBy = "utente")
+    @JsonIgnore
     private ClienteEntity cliente;
 
     public UtenteEntity(){

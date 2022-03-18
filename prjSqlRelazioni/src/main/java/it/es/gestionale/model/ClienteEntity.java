@@ -31,7 +31,6 @@ public class ClienteEntity {
     
     @OneToOne
     @JoinColumn(name="utente_id")
-    @JsonIgnore
     private UtenteEntity utente;
 
 	@OneToMany(mappedBy ="cliente")
