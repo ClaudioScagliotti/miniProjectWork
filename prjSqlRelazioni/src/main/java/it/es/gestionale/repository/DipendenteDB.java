@@ -15,6 +15,8 @@ public interface DipendenteDB extends JpaRepository<DipendenteEntity, Integer>{
 
     public List<DipendenteEntity> findAllByOrderByCognome();
 
+    public List<DipendenteEntity> findAllByOrderBySettore();
+
     public List<DipendenteEntity> findByStipendioBetween(double min,double max);
 
 }

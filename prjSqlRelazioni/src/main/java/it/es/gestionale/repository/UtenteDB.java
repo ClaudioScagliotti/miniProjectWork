@@ -9,12 +9,7 @@ import it.es.gestionale.model.UtenteEntity;
 
 
 @Repository
-public interface ImpiegatoDB extends JpaRepository<ImpiegatoEntity, Integer>{
+public interface UtenteDB extends JpaRepository<UtenteEntity, Integer>{
 
-    public List<ImpiegatoEntity> findAllByOrderByNome();
-
-    public List<ImpiegatoEntity> findAllByOrderByCognome();
-
-    public List<ImpiegatoEntity> findByStipendioBetween(double min,double max);
 }
 

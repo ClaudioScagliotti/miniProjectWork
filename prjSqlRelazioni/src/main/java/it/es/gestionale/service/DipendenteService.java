@@ -32,6 +32,13 @@ public class DipendenteService {
         return null;
     }
 
+    public List<DipendenteEntity> getDipendentiBySettore(){
+        if(dipente.getUtente().getRuolo().equals("supervisore")){
+            return dipDB.findAllByOrderBySettore();
+        }
+        return null;
+    }
+
 
     public List<DipendenteEntity> getDipendentiByStipendio(double min,double max){
         if(dipente.getUtente().getRuolo().equals("supervisore")){
