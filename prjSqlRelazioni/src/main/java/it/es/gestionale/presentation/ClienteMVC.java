@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import it.es.gestionale.model.ClienteEntity;
+import it.es.gestionale.model.ClienteUtente;
 import it.es.gestionale.model.UtenteEntity;
 import it.es.gestionale.service.ClienteService;
 
