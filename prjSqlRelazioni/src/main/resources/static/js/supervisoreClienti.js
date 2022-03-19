@@ -7,6 +7,8 @@ let all_inputs = null;
 let modal = null;
 
 
+
+
 function listaClienti(event){
 
 	fetch(url+"lista")
@@ -77,6 +79,9 @@ function chiamaModale(event){
 	
 	svuotaModale();
 	modal.show();
+	createButton.classList.remove("nascondi");
+	updateButton.classList.add("nascondi");
+	document.getElementById("emailUtente").removeAttribute("readonly");
 	
 
 }
@@ -97,6 +102,11 @@ function createCliente(event){
         regione: document.getElementById("regioneCliente").value,
         provincia: document.getElementById("provinciaCliente").value,
         citta: document.getElementById("cittaCliente").value,
+		utente:{
+				email: document.getElementById("emailUtente").value,
+				password: document.getElementById("passwordUtente").value,
+				ruolo: "cliente"
+		}
 		
 		
     }),
@@ -122,6 +132,10 @@ function editInsertCliente(event){
 	
 	let originator = event.currentTarget;
 	let idCliente = originator.getAttribute('cliente-id');
+	createButton.classList.add("nascondi");
+	updateButton.classList.remove("nascondi");
+	document.getElementById("emailUtente").setAttribute("readonly", "");
+
 
 	console.log(idCliente);
 
@@ -141,6 +155,8 @@ function editInsertCliente(event){
 			document.getElementById("provinciaCliente").value = json.provincia; 
 			document.getElementById("cittaCliente").value = json.citta;
 			document.getElementById("utenteCliente").value = json.utente.id; 
+			document.getElementById("emailUtente").value = json.utente.email;
+			document.getElementById("passwordUtente").value = json.utente.password;
 			
 
 			})
@@ -172,7 +188,10 @@ function editCliente(event){
         provincia: document.getElementById("provinciaCliente").value,
         citta: document.getElementById("cittaCliente").value,
 		utente:{
-			id: document.getElementById("utenteCliente").value
+			id: document.getElementById("utenteCliente").value,
+			email: document.getElementById("emailUtente").value,
+			password: document.getElementById("passwordUtente").value,
+			ruolo: "cliente"
 		}		       
     }),
 	})
@@ -196,6 +215,7 @@ function agganciaEventi(){
 	for(let li=0; li<editButton.length; li++){
 	editButton[li].addEventListener("click", editInsertCliente);	
 	}
+	
 }
 
 function svuotaModale(){
@@ -208,6 +228,10 @@ function svuotaModale(){
 	document.getElementById("regioneCliente").value = ""; 
 	document.getElementById("provinciaCliente").value = ""; 
 	document.getElementById("cittaCliente").value = ""; 
+	document.getElementById("utenteCliente").value = "";
+	document.getElementById("emailUtente").value = "";
+	document.getElementById("passwordUtente").value = "";
+	
 
 }
 window.addEventListener(
@@ -216,7 +240,9 @@ window.addEventListener(
 
 	modal = new bootstrap.Modal(document.getElementById('exampleModal'), {});
 		
-	template_riga = document.getElementById("table_rows").innerHTML;	
+	template_riga = document.getElementById("table_rows").innerHTML;
+	
+	
 	
 	let selectButton = document.getElementById("selectButton");
 	selectButton.addEventListener("click", getByFilter);

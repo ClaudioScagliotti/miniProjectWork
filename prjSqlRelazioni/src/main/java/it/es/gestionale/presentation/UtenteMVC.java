@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import it.es.gestionale.model.UtenteEntity;
 import it.es.gestionale.service.UtenteService;
 
 @Controller
 @RequestMapping("/login")
+@SessionAttributes("utenteSession")
 public class UtenteMVC {
 	
 	@Autowired
@@ -44,11 +45,11 @@ public class UtenteMVC {
 			
 			UtenteEntity utente = usrv.login(utenteForm); // restituisce utente se esiste, altrim lancia eccezione
 			System.out.println("utente: " + utente);
-			session.setAttribute("utente", utente); // aggiungo l'istanza dell'utente loggato alla sessione
+			session.setAttribute("utenteSession", utente); // aggiungo l'istanza dell'utente loggato alla sessione
 			switch(utente.getRuolo()) {
 			
 			case "cliente":
-				return "redirect:/cliente.html";
+				return "cliente";
 				
 			case "impiegato":
 				return "redirect:/impiegato.html";

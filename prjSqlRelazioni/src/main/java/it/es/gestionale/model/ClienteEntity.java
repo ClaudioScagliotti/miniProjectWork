@@ -2,6 +2,7 @@ package it.es.gestionale.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class ClienteEntity {
     private String provincia;
     private String regione;
     
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="utente_id")
     private UtenteEntity utente;
 
