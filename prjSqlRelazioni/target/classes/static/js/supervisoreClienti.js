@@ -1,4 +1,3 @@
-"use strict";
 
 const url="http://localhost:8080/api/cliente/";
 let template_riga = "";
@@ -75,7 +74,7 @@ function getByFilter(event){
 }
 
 function chiamaModale(event){
-	event.stopPropagation();
+	
 	svuotaModale();
 	modal.show();
 	
@@ -84,9 +83,6 @@ function chiamaModale(event){
 
 function createCliente(event){
 			
-	
-
-	console.log(document.getElementById("nomeCliente").value);
 	fetch(url, {
 	  method: 'POST',
 	  headers: {
@@ -106,12 +102,13 @@ function createCliente(event){
     }),
 	
 	})
-	.then(response => response.json())
-		listaClienti()
-		modal.hide()
-		svuotaModale()
-		
 
+	.then(function(response){
+
+		modal.hide();
+		listaClienti();
+		return response.json();
+	})
 	.catch((error) => {
 		
 	  console.error('Error:', error);
@@ -122,7 +119,7 @@ function createCliente(event){
 
 function editInsertCliente(event){
 
-
+	
 	let originator = event.currentTarget;
 	let idCliente = originator.getAttribute('cliente-id');
 
@@ -179,16 +176,18 @@ function editCliente(event){
 		}		       
     }),
 	})
-	.then(response => response.json())
-		listaClienti()	
-		modal.hide()
-		svuotaModale()
-		
+	.then(function(response) {
+
+		modal.hide();
+		listaClienti();
+		return response.json();
+	})
+	
 	.catch((error) => {
 		
-	  console.error('Error:', error);
+		console.error('Error:', error);
 	});
-
+	
 	agganciaEventi();
 }
 
@@ -222,11 +221,14 @@ window.addEventListener(
 	let selectButton = document.getElementById("selectButton");
 	selectButton.addEventListener("click", getByFilter);
 
-	let createButton = document.getElementById("createButton");
-	createButton.addEventListener("click", chiamaModale);
+	let modCreateButton = document.getElementById("mostraModaleCreate");
+	modCreateButton.addEventListener("click", chiamaModale);
 
 	let updateButton = document.getElementById("updateButton");
 	updateButton.addEventListener("click", editCliente);
+
+	let createButton = document.getElementById("createButton");
+	createButton.addEventListener("click", createCliente);
 
 	let editButton = document.getElementsByClassName("editButton");
 	for(let li=0; li<editButton.length; li++){

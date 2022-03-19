@@ -23,8 +23,8 @@
         <button id="selectButton" class="btn btn-outline-secondary col-2" type="button">Cerca</button>
       </div>
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
+      <button id="mostraModaleCreate" type="button" class="btn btn-primary">
+        Create Cliente
       </button>
 
     <table class="table">
@@ -54,7 +54,7 @@
                 <td>{{provincia}}</td>
                 <td>{{regione}}</td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary editButton" cliente-id="{{id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">edit</button> 
+                    <button  type="button" class="btn btn-sm btn-primary editButton" cliente-id="{{id}}" data-bs-toggle="modal" data-bs-target="#exampleModal">edit</button> 
                     <button type="button" class="btn btn-sm btn-danger delete-song" data-song-id="{{id}}" data-song-title="{{title}}">delete</button>
                 </td>
             </tr>
