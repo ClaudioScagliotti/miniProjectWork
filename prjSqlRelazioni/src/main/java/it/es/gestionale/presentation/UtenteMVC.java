@@ -49,7 +49,7 @@ public class UtenteMVC {
 			switch(utente.getRuolo()) {
 			
 			case "cliente":
-				return "cliente";
+				return "redirect:/cliente";
 				
 			case "impiegato":
 				return "redirect:/impiegato.html";

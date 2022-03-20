@@ -16,14 +16,18 @@ import it.es.gestionale.model.ClienteEntity;
 import it.es.gestionale.model.ClienteUtente;
 import it.es.gestionale.model.UtenteEntity;
 import it.es.gestionale.service.ClienteService;
+import it.es.gestionale.service.UtenteService;
 
 @Controller
-@RequestMapping("login/cliente")
+@RequestMapping("cliente")
 @SessionAttributes("utenteSession")
 public class ClienteMVC {
 
     @Autowired
     ClienteService srv;
+    
+    @Autowired
+    UtenteService uSrv;
     
     
    /* @GetMapping("/prova")
@@ -39,6 +43,11 @@ public class ClienteMVC {
     }*/
     
     @GetMapping
+    public String homeCliente() {
+    	return "homeCliente";
+    }
+    
+    @GetMapping("/anagrafica")
     public String ottieniCliente(@ModelAttribute ("utenteSession") UtenteEntity utente, Model model) {
     	model.addAttribute("formCliente", srv.getClienteByUtente(utente));
     	model.addAttribute("formUtente", utente);
@@ -47,16 +56,14 @@ public class ClienteMVC {
     	return "anagraficaCliente";
     }
    
-    @PostMapping("/anagrafica") 
-	public String updateCliente(@ModelAttribute UtenteEntity utenteForm, Model model, HttpSession session) {
-    UtenteEntity u = (UtenteEntity) session.getAttribute("utente");
-    ClienteEntity c=srv.getClienteByUtente(u);
-    ClienteUtente cu= new ClienteUtente();
-    model.addAttribute("cliente", c);
-    model.addAttribute("utente", u);
-    model.addAttribute("", cu);
-    return "anagrafica";
-    //TODO
+    @PostMapping("/anagrafica/cliente") 
+	public String updateCliente(@ModelAttribute("cliente") ClienteEntity cliente) {
+    	srv.updateCliente(cliente);
+    return "redirect:/cliente/anagrafica";
+    
     }
+    
+  
+    
     
 }

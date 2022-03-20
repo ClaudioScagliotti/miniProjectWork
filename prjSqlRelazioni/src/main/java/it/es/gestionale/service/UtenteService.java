@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.es.gestionale.model.ClienteEntity;
 import it.es.gestionale.model.UtenteEntity;
 import it.es.gestionale.repository.UtenteDB;
 
@@ -43,4 +44,7 @@ public class UtenteService {
 		uDB.save(input); 
 	}
 
+	public UtenteEntity updateUtente (UtenteEntity utente) {
+		return uDB.save(utente);
+	}
 }
