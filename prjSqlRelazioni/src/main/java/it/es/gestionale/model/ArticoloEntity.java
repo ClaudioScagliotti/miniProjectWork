@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.opencsv.bean.CsvBindByName;
 
 @Entity
 @Table(name = "articolo")
@@ -18,10 +19,13 @@ public class ArticoloEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+	@CsvBindByName
 	private String descrizione;
+	@CsvBindByName
 	private double prezzo;
+	@CsvBindByName
 	private String categoria;
+	@CsvBindByName
 	private int rimanenza;
 	
 	@OneToMany(mappedBy ="articolo")

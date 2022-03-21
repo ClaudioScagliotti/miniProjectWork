@@ -93,7 +93,7 @@ public class DipendenteEntity {
     @Override
     public String toString() {
         return "DipendenteEntity [cognome=" + cognome + ", id=" + id + ", nome=" + nome + ", rif_to=" + rif_to
-                + ", stipendio=" + stipendio + ", ufficio_id=" + ufficio + ", utente_id=" + utente + "]";
+                + ", stipendio=" + stipendio + ", ufficio_id=" + ufficio +"]";
     }
 
   
