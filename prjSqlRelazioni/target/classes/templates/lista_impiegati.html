@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+  <!--Titolo-->
+  <div style="text-align: center;">
+    <img src="https://images.cooltext.com/5586845.png" alt="Lista Editori">
+  </div>  
+
+
+  <!--Contenitore della TABELLA-->
+  <div style="background-color: white; margin-left: 20%; margin-right: 20%;">
+
+    <table class="table table-bordered" id="tabellaImpiegati" th:if="${impiegati} != null">
+      <thead>
+        <tr>
+          <th scope="col">NOME</th> 
+          <th scope="col">COGNOME</th>
+          <th scope="col">RUOLO</th>
+          <th scope="col">STIPENDIO</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr th:each="impiegato : ${impiegati}">
+            <td th:text="${impiegato.nome}"></td>
+            <td th:text="${impiegato.cognome}"></td>
+            <td th:text="${impiegato.ruolo}"></td>
+            <td th:number="${impiegato.stipendio}"></td>
+            <!-- Bottoni Tabella-->
+            <td><div>
+            <!--Bottone "modifica"-->
+            <button th:onclick="'openForm('+${impiegato.id}+')'" style="display: inline;" type="button" class="btn btn-primary">Modifica</button>
+            <!-- Popup "Modifica"-->
+            <div class="form-popup" id="myForm">
+              
+            <form id="formAddEdit" action="/lista-editori/modify-impiegato" method="post" class="form-container">
+              <!--Titolo popup-->
+            <div>
+            <h1 id="titleAdd">Modifica</h1>
+            </div>
+        
+           
+            <input id="idInput" type="hidden" name="id">
+        
+           
+            <label for="nome"><b>Nome</b></label></br>
+            <input id="nomeInput" type="text" placeholder="Nome impiegato" name="nome">
+        
+             
+            <label for="cognome"><b>Cognome</b></label></br>
+            <input id="cognomeInput" type="text" placeholder="Cognome impiegato" name="cognome">
+
+            <label for="ruolo"><b>Ruolo</b></label></br>
+            <input id="ruoloInput" type="text" placeholder="Ruolo impiegato" name="ruolo">
+
+
+            <label for="stipendio"><b>Stipendio</b></label></br>
+            <input id="stipendioInput" type="number" placeholder="Stipendio impiegato" name="stipendio">
+
+        
+              <!--Bottoni popup-->
+            <input id="editButton" type="submit" value="Aggiungi" class="btn">
+            <button type="button" class="btn cancel" onclick="closeForm()">Chiudi</button>
+        
+            </form>
+            </div>
+           
+          
+            </div></td>
+
+          </tr>
+       </tbody>
+    </table>
+  </div>
+
+  <!-- Bottone "Aggiungi"-->
+  <div style="float:right; margin-right: 20%;">
+    <button type="button" class="btn btn-success" onclick="openForm2()">Aggiungi</button>
+
+    <!-- Popup "Aggiungi"-->
+    <div class="form-popup" id="myForm2">
+    <form id="formAddEdit" action="/lista-editori/add-editore" method="post" class="form-container">
+      <!--Titolo popup-->
+    <div>
+    <h1 id="titleAdd">Aggiungi</h1>
+    </div>
+
+      <!--ID editore (hidden)-->
+    <input id="idInput" type="hidden" name="id">
+
+            <label for="nome"><b>Nome</b></label></br>
+            <input id="nomeInput" type="text" placeholder="Nome impiegato" name="nome">
+        
+             
+            <label for="cognome"><b>Cognome</b></label></br>
+            <input id="cognomeInput" type="text" placeholder="Cognome impiegato" name="cognome">
+
+            <label for="ruolo"><b>Ruolo</b></label></br>
+            <input id="ruoloInput" type="text" placeholder="Ruolo impiegato" name="ruolo">
+
+
+            <label for="stipendio"><b>Stipendio</b></label></br>
+            <input id="stipendioInput" type="number" placeholder="Stipendio impiegato" name="stipendio">
+
+      <!--Bottoni popup-->
+    <input id="editButton" type="submit" value="Aggiungi" class="btn">
+    <button type="button" class="btn cancel" onclick="closeForm2()">Chiudi</button>
+
+    </form>
+
+    </div>
+  </div>
+
+    <p>abbellire l'esito!!!</p>
+    <div id="esito" th:text="${esito}"></div>
+
+  
+  </body>
+</html>
