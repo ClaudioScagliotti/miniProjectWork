@@ -17,5 +17,9 @@ public interface ClienteDB extends JpaRepository<ClienteEntity, Integer> {
 	List<ClienteEntity> findByNome(String nome);
 	List<ClienteEntity> findByCognome(String cognome);
 	List<ClienteEntity> findByTelefono(String telefono);
-	ClienteEntity findByUtente(UtenteEntity utente);	
+	ClienteEntity findByUtente(UtenteEntity utente);
+	
+	
+	
+	
 }

@@ -1,5 +1,6 @@
 package it.es.gestionale.model;
 
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="clientejoin")
 public class ClienteJoin {
+	
+	
+	
 	
 	@Id
 	private int id;
@@ -31,13 +35,19 @@ public class ClienteJoin {
 		return id;
 	}
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
+
+
 	public String getTelefono() {
 		return telefono;
 	}
+
+
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
@@ -58,6 +68,9 @@ public class ClienteJoin {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	
+
 
 	public String getEmail() {
 		return email;
@@ -97,5 +110,7 @@ public class ClienteJoin {
 
 	public void setRegione(String regione) {
 		this.regione = regione;
-	} 
+	}
+
+    
 }

@@ -1,3 +1,9 @@
+.gitignore
+*MANIFEST.MF
+*DS_STORE
+*application.properties
+*pom.properties
+*pom.xml
 hs_err_pid*
 
 ## my ignores

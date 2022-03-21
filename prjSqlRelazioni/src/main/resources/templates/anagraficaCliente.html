@@ -10,9 +10,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <form action="#" th:action="@{/anagrafica/cliente}" th:object="${formCliente}" method="post">
+            
+                <form action="#" th:action="@{/cliente/anagrafica/cliente}" th:object="${formCliente}" method="post">
+		        <div class="row">
+                <div class="col-6">
                     <div class="mb-3">
                       <label for="idCliente" class="form-label ">Id</label>
                       <input type="number" class="form-control clienteForm" id="idCliente" aria-describedby="emailHelp" th:field="${formCliente.id}" readonly>
@@ -49,33 +50,44 @@
                       <label for="cittaCliente" class="form-label"></label>
                       <input type="text" class="form-control clienteForm" id="utenteCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.id}" hidden>
                     </div>
+                    </div>
+                    <div class="col-6">
+                     <div class="mb-3">
+                        <label for="emailCliente" class="form-label ">Email</label>
+                        <input type="email" class="form-control clienteForm" id="emailCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.email}" readonly>
+                      </div>
+                      <div class="mb-3">
+                        <label for="passwordCliente" class="form-label ">Password</label>
+                        <input type="text" class="form-control clienteForm" id="passwordCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.password}" >
+                      </div>
+                       <div class="mb-3">                   
+                        <input type="text" class="form-control clienteForm" id="ruoloCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.ruolo}" hidden>
+                      </div>
                     
+                    </div>
     
-                  
-                  </form>
-            </div>
+                  </div>
+                  <div class="text-center">
+                    	<button type="submit" class="btn btn-primary">Aggiorna</button>
+                    </div>
+                 </form>
+           <!--  </div>
             <div class="col-6">
-                <form action="#" th:action="@{/anagrafica/utente}" th:object="${formUtente}" method="post">
+                <form action="#" th:action="@{/login/cliente/anagrafica/utente}" th:object="${formUtente}" method="post">
                     <div class="mb-3">
                       <label for="idCliente" class="form-label ">Id</label>
                       <input type="number" class="form-control clienteForm" id="idCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.id}" readonly>
                     </div>
-                    <div class="mb-3">
-                        <label for="emailCliente" class="form-label ">Email</label>
-                        <input type="email" class="form-control clienteForm" id="emailCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.email}"  >
-                      </div>
-                    <div class="mb-3">
-                        <label for="passwordCliente" class="form-label ">Password</label>
-                        <input type="text" class="form-control clienteForm" id="passwordCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.password}" >
-                      </div>
-                    <div class="mb-3">
-                        
-                        <input type="text" class="form-control clienteForm" id="ruoloCliente" aria-describedby="emailHelp" th:field="${formCliente.utente.ruolo}" hidden>
-                      </div>
+                   
+                    
+                   
+                      <div>
+                    	<input type="submit">
+                    </div>
   				</form>
 
-            </div>
-        </div>
+            </div>-->
+        
     </div>
 </body>
 </html>
