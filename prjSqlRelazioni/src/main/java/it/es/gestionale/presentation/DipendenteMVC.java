@@ -15,14 +15,14 @@ import it.es.gestionale.service.DipendenteService;
 
 @Controller
 @RequestMapping("dipendente")
-@SessionAttributes("utenteSession")
+@SessionAttributes("utente")
 public class DipendenteMVC {
 
     @Autowired
     DipendenteService srv;
 
     @GetMapping
-    public String homeDipendente(@ModelAttribute ("utenteSession") UtenteEntity utente,Model m){
+    public String homeDipendente(@ModelAttribute ("utente") UtenteEntity utente,Model m){
        if(utente.getRuolo().equals("impiegato")){
         m.addAttribute("dipendente",utente.getDipendente().getCognome());
         return "homeImpiegato";

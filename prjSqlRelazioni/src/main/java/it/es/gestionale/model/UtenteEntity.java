@@ -25,7 +25,7 @@ public class UtenteEntity {
     private String ruolo;
 
     @OneToOne(mappedBy = "utente")
-	@JsonIgnore
+    @JsonIgnore
 	private DipendenteEntity dipendente;
     
     @OneToOne(mappedBy = "utente")

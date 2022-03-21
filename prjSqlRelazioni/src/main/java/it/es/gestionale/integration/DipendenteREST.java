@@ -22,7 +22,7 @@ public class DipendenteREST {
     @Autowired
     DipendenteService service;
 
-    @GetMapping("/nome")
+    /*@GetMapping("/nome")
     public List<DipendenteEntity> getImpiegatiByNome(){
         return service.getDipendentiByNome();
     }
@@ -40,6 +40,6 @@ public class DipendenteREST {
     @GetMapping("/stipendio/range/{min}/{max}")
     public List<DipendenteEntity> getImpiegatiByStipendio(@PathVariable double min,@PathVariable double max){
         return service.getDipendentiByStipendio(min,max);
-    }
+    }*/
 
 }

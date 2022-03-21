@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import it.es.gestionale.model.ClienteEntity;
@@ -29,36 +30,36 @@ public class ClienteREST {
 	private ClienteService cServ;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ClienteEntity> getCliente(@PathVariable("id") int id, UtenteEntity utente) {
-		if(!utente.getRuolo().equals("cliente")) {
-		return ResponseEntity.ok(cServ.getCliente(id));
+	public ResponseEntity<ClienteEntity> getCliente(@PathVariable("id") int id, @SessionAttribute UtenteEntity utente) {
+		if(utente.getRuolo().equals("cliente")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
 		
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		return ResponseEntity.ok(cServ.getCliente(id));
 	}
 	
 	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<ClienteJoin>> getClientiByNome(@PathVariable("nome")String nome, UtenteEntity utente){
-		if(!utente.getRuolo().equals("cliente")) {
-		return ResponseEntity.ok(cServ.getClienteByNome(nome));
+	public ResponseEntity<List<ClienteJoin>> getClientiByNome(@PathVariable("nome")String nome, @SessionAttribute UtenteEntity utente){
+		if(utente.getRuolo().equals("cliente")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		return ResponseEntity.ok(cServ.getClienteByNome(nome));
 
 	}
 	
 	@GetMapping("/cognome/{cognome}")
-	public ResponseEntity<List<ClienteJoin>> getClientiByCognome(@PathVariable("cognome")String cognome, UtenteEntity utente){
-		if(!utente.getRuolo().equals("cliente")) {
+	public ResponseEntity<List<ClienteJoin>> getClientiByCognome(@PathVariable("cognome")String cognome, @SessionAttribute UtenteEntity utente){
+		if(utente.getRuolo().equals("cliente")) {
 		return ResponseEntity.ok(cServ.getClienteByCognome(cognome));
 	}
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}
 	@GetMapping("/telefono/{telefono}")
-	public ResponseEntity<List<ClienteJoin>> getClientiByTelefono(@PathVariable("telefono")String telefono, UtenteEntity utente){
-		if(!utente.getRuolo().equals("cliente")) {
-		return ResponseEntity.ok(cServ.getClienteByTelefono(telefono));
+	public ResponseEntity<List<ClienteJoin>> getClientiByTelefono(@PathVariable("telefono")String telefono, @SessionAttribute UtenteEntity utente){
+		if(utente.getRuolo().equals("cliente")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		return ResponseEntity.ok(cServ.getClienteByTelefono(telefono));
 	}	
 	/*@GetMapping("/lista")
 	public List<ClienteEntity> getAll(){
@@ -66,35 +67,34 @@ public class ClienteREST {
 	}*/
 
 	@GetMapping("/lista")
-	public ResponseEntity<List<ClienteJoin>> getAllClienteJoin(UtenteEntity utente){
-		if(!utente.getRuolo().equals("cliente")) {
+	public ResponseEntity<List<ClienteJoin>> getAllClienteJoin(@SessionAttribute UtenteEntity utente){
+		if(utente.getRuolo().equals("cliente")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		}
+		
 		return ResponseEntity.ok(cServ.getAllClienteJoin());
-	}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}	
 		
 	
 	@GetMapping("/email/{email}")
-	public ResponseEntity<List<ClienteJoin>> getByEmail(@PathVariable("email") String email, UtenteEntity utente) {
-		if(!utente.getRuolo().equals("cliente")) {
-		return ResponseEntity.ok(cServ.getClienteByEmail(email));
+	public ResponseEntity<List<ClienteJoin>> getByEmail(@PathVariable("email") String email, @SessionAttribute UtenteEntity utente) {
+		if(utente.getRuolo().equals("cliente"))  {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		return ResponseEntity.ok(cServ.getClienteByEmail(email));
 	}	
 	
 	@PutMapping
-	public ResponseEntity<Void> updateCliente(@RequestBody ClienteEntity cliente, UtenteEntity utente) {
-		if(!utente.getRuolo().equals("cliente")) {
-			ResponseEntity.ok(cServ.updateCliente(cliente));
+	public ResponseEntity<ClienteEntity> updateCliente(@RequestBody ClienteEntity cliente, @SessionAttribute UtenteEntity utente) {
+		if(utente.getRuolo().equals("cliente")) {
+			ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+		return ResponseEntity.ok(cServ.updateCliente(cliente));
+		
 	}	
 
 	@PostMapping
-	public ResponseEntity<Void> addCliente(@RequestBody ClienteEntity c, UtenteEntity utente) {
-		if(!utente.getRuolo().equals("cliente")) {
-			ResponseEntity.ok(cServ.addCliente(c));
-	}
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+	public void addCliente(@RequestBody ClienteEntity c, @SessionAttribute UtenteEntity utente) {
+			cServ.addCliente(c);
 	}	
 }

@@ -16,7 +16,7 @@ import it.es.gestionale.service.UtenteService;
 
 @Controller
 @RequestMapping("/login")
-@SessionAttributes("utenteSession")
+@SessionAttributes("utente")
 public class UtenteMVC {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class UtenteMVC {
 			
 			UtenteEntity utente = usrv.login(utenteForm); // restituisce utente se esiste, altrim lancia eccezione
 			System.out.println("utente: " + utente);
-			session.setAttribute("utenteSession", utente); // aggiungo l'istanza dell'utente loggato alla sessione
+			session.setAttribute("utente", utente); // aggiungo l'istanza dell'utente loggato alla sessione
 			switch(utente.getRuolo()) {
 			
 			case "cliente":

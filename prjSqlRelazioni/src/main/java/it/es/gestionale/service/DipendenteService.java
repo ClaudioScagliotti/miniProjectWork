@@ -14,7 +14,7 @@ public class DipendenteService {
     @Autowired
     DipendenteDB dipDB;
 
-    public List<DipendenteEntity> getDipendentiByNome(String nome){   
+    /*public List<DipendenteEntity> getDipendentiByNome(String nome){   
             return dipDB.findByNome(nome);
         
     }
@@ -23,15 +23,15 @@ public class DipendenteService {
             return dipDB.findByCognome(cognome);
     }
 
-    public List<DipendenteEntity> getDipendentiBySettore(){
+    /*public List<DipendenteEntity> getDipendentiBySettore(){
         if(dipente.getUtente().getRuolo().equals("supervisore")){
             return dipDB.findAllByOrderBySettore();
         }
         return null;
-    }
+    }*/
 
 
-    public List<DipendenteEntity> getDipendentiByStipendio(double min,double max){
+   /* public List<DipendenteEntity> getDipendentiByStipendio(double min,double max){
             return dipDB.findByStipendioBetween(min,max);
-    }
+    }*/
 }
