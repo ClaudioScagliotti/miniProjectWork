@@ -20,7 +20,7 @@ import it.es.gestionale.service.UtenteService;
 
 @Controller
 @RequestMapping("cliente")
-@SessionAttributes("utenteSession")
+@SessionAttributes("utente")
 public class ClienteMVC {
 
     @Autowired
@@ -48,7 +48,7 @@ public class ClienteMVC {
     }
     
     @GetMapping("/anagrafica")
-    public String ottieniCliente(@ModelAttribute ("utenteSession") UtenteEntity utente, Model model) {
+    public String ottieniCliente(@ModelAttribute ("utente") UtenteEntity utente, Model model) {
     	model.addAttribute("formCliente", srv.getClienteByUtente(utente));
     	model.addAttribute("formUtente", utente);
     	
