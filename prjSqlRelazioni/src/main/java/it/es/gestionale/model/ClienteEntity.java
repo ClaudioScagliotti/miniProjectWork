@@ -2,6 +2,7 @@ package it.es.gestionale.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name ="cliente")
@@ -26,11 +29,13 @@ public class ClienteEntity {
     private String citta;
     private String provincia;
     private String regione;
-    @OneToOne
+    
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="utente_id")
     private UtenteEntity utente;
 
 	@OneToMany(mappedBy ="cliente")
+	@JsonIgnore
 	private List<OrdineEntity> ordini;
     
     

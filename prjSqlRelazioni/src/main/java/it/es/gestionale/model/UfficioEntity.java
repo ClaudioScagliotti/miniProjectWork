@@ -52,7 +52,7 @@ public class UfficioEntity {
 
 	@Override
 	public String toString() {
-		return "UfficioEntity [id=" + id + ", nome=" + nome + ", impiegati=" + impiegati + "]";
+		return "UfficioEntity [id=" + id + ", nome=" + nome + "]";
 	}
 
 }
