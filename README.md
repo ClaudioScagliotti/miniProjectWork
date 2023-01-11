@@ -1,2 +1,2 @@
 # miniProjectWork
-Implementazioni al gestionale
+Progetto svolto insieme ad alcuni colleghi durante il corso Generation per Junior Java Developer, Marzo 2022
